@@ -44,6 +44,11 @@ contract ChinToken{
 
         approval[_giver] = false; //Approval only for one transaction  
     }
+
+    //Function for user to give prior approval for third party transaction
+    function giveApproval (bool choice) public {
+        approval[msg.sender] = choice;
+    }
     
     
 }
