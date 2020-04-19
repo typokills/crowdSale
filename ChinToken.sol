@@ -36,15 +36,13 @@ contract ChinToken{
     //Third party transfer of tokens, Can only be used by issuer of the tokens
     function transferFrom(address _giver, address _receiver, uint256 amt) public {
         require(tokenBalance[_giver] >= amt);
-        require(approval[_giver] == true); //_giver must give prior approval for ONE transaction
-        require(amt > 0);
+        require(approval[_giver] == true); //_giver must give prior approval for transaction
+        require(amt > 0); //ensures sender cannot steal
 
         tokenBalance[_giver] -= amt;
         tokenBalance[_receiver] += amt;
 
-        approval[_giver]
-        
-
+        approval[_giver] = false; //Approval only for one transaction  
     }
     
     
